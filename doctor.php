@@ -17,8 +17,7 @@ function addBook(){
     $conn->query($sql_query);
     $rst = $conn->query($sql_query);
     $Response_Data= $rst->fetchAll(PDO::FETCH_NUM);
-   
-   
+     
 }
 
 function getBookAll(){

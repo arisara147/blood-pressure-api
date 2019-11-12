@@ -2,14 +2,11 @@
   
         error_reporting(0);
         session_start();
-
         define('DB_SERVER','localhost');
         define('DB_USERNAME','root');
         define('DB_PASSWORD','');
         define('DB_DATABASE','mis_project');
      
-
-
         function getDB(){
             $dbhost = DB_SERVER;
             $dbuser = DB_USERNAME;
