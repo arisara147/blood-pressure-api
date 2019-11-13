@@ -21,8 +21,6 @@ function addBloodPressure(){
     $sql_query = "INSERT INTO report(rep_id,rep_date,rep_time,p_id,sys,dia,pr,rep_status,rep_note) VALUES ('$Rep_Id','$Rep_Date','$Rep_Time','$P_Id','$Sys','$Dia','$Pr','$Status','$Note')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
-    $rst = $conn->query($sql_query);
-    $Response_Data= $rst->fetchAll(PDO::FETCH_NUM);
      
 }
 
