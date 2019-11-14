@@ -15,8 +15,7 @@ function addBook(){
     $sql_query = "INSERT INTO book(id_book,namebook,typebook,pricebook) VALUES ('$IdBook','$NameBook','$TypeBook','$PriceBook')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
-    $rst = $conn->query($sql_query);
-    $Response_Data= $rst->fetchAll(PDO::FETCH_NUM);
+    
      
 }
 
