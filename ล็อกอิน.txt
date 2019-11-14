@@ -1,0 +1,4 @@
+แพทย์ dr_article, dr_name, dr_sex, dr_user, dr_passwd, dr_tell, dr_address
+พยาบาล nurse_article, nurse_name, nurse_sex, nurse_user, nurse_passwd, nurse_tell, nurse_address
+ผู้ป่วย p_article, p_name, p_user, p_passwd, p_birthDate, p_sex, p_weight, p_height, p_tell, p_address
+แอดมิน admin_article, admin_name, admin_sex, admin_user, admin_passwd, admin_tell, admin_address
