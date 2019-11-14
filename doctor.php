@@ -21,6 +21,11 @@ function addDoctor(){
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
+<<<<<<< HEAD
+=======
+    
+     
+>>>>>>> cbf2495402cb737d3850d803655fd64c3321503d
 }
 
 function getUserAll(){
