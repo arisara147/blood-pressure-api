@@ -8,7 +8,7 @@ $_POST['Function_Name']();
 
 function getallLogin(){
     $Data = json_decode($_POST['_Data']);
-    $conn = getDB();    
+    $conn = getDB();
     $sql_query = "SELECT * from log_login";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
