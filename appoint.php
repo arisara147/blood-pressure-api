@@ -7,14 +7,16 @@ $_POST['Function_Name']();
 
 function addAppoit(){
     $Data = json_decode($_POST['_Data']);
-    $App_Id = $Data->app_id;
-    $App_Date = $Data->app_date;
-    $App_Time = $Data->app_time;
-    $P_Id = $Data->p_id; 
-    $Dr_Id = $Data->dr_id;
-    $App_Describtion = $Data->app_describtion;
+    $AppId = $Data->app_id;
+    $AppDate = $Data->app_date;
+    $AppTime = $Data->app_time;
+    $PId = $Data->p_id; 
+    $DrId = $Data->dr_id;
+    $PName = $Data->p_name; 
+    $DrName = $Data->dr_name;
+    $AppDetail = $Data->app_detail;
     $conn = getDB();
-    $sql_query = "INSERT INTO appoint(app_id,app_date,app_time,p_id,dr_id,app_describtion) VALUES ('$App_Id','$App_Date','$App_Time','$P_Id','$Dr_Id','$App_Describtion')";
+    $sql_query = "INSERT INTO appoints(app_id,app_date,app_time,p_id,p_name,dr_id,dr_name,app_detail) VALUES ('$AppId','$AppDate','$AppTime','$PId','$PName','$DrId','$DrName','$AppDetail')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
     //$rst = $conn->query($sql_query);
