@@ -314,4 +314,19 @@ function addNews(){
  
 }
 
+function checkloginadmin(){
+    $Data = json_decode($_POST['_Data']);
+    $user = $Data->admin_user;
+    $pwd = $Data->admin_passwd;
+    $conn = getDB();
+    $sql_query = "SELECT * from admin where admin_user='$user' and admin_passwd='$pwd'";
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    $rst = $conn->query($sql_query);
+    $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ);
+    $Response_Data = json_encode($Response_Data);
+    echo $Response_Data;
+}
+
 ?>
