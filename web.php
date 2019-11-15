@@ -247,7 +247,6 @@ function addPatient(){
     $sql_query = "INSERT INTO patient(p_id,p_address,p_birthDate,p_height,p_weight,p_name,p_passwd,p_sex,p_tell,p_user,p_article) VALUES ('$IdPatient','$Address','$HBD','$Height','$Weight','$Name','$Pass','$Sex','$Tell','$User','$Article')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
-   
      
 }
 
@@ -265,7 +264,6 @@ function addAdmin(){
     $sql_query = "INSERT INTO admin(admin_id,admin_address,admin_name,admin_passwd,admin_sex,admin_tell,admin_user,admin_article) VALUES ('$IdAdmin','$Address','$Name','$Pass','$Sex','$Tell','$User','$Article')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
-   
      
 }
 
@@ -300,8 +298,20 @@ function addNurse(){
     $sql_query = "INSERT INTO nurse(nurse_id,nurse_address,nurse_name,nurse_passwd,nurse_sex,nurse_tell,nurse_user,nurse_article) VALUES ('$IdDoctor','$Address','$Name','$Pass','$Sex','$Tell','$User','$Article')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
-    
-     
+ 
+}
+
+function addNews(){
+    $Data = json_decode($_POST['_Data']);
+    $Idnews = $Data->news_id;
+    $Date = $Data->news_date;
+    $Name = $Data->news_name;
+    $Detail = $Data->news_detail;
+    $conn = getDB();
+    $sql_query = "INSERT INTO news(news_id,news_date,news_name,news_detail) VALUES ('$Idnews','$Date','$Name','$Detail')";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+ 
 }
 
 ?>
