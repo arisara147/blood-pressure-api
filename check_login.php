@@ -65,4 +65,18 @@ function checkloginpatient(){
     $Response_Data = json_encode($Response_Data);
     echo $Response_Data;
 }
+
+function AddloginLog(){
+    $Data = json_decode($_POST['_Data']);
+    $user = $Data->login_username;
+    $pass = $Data->login_password;
+    $name = $Data->login_name;
+    $type = $Data->login_type;  
+    $conn = getDB();
+    $sql_query = "INSERT INTO log_login(login_username,login_password,login_name,login_type) 
+    VALUES ('$user','$pass','$name','$type')";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+}
+
 ?>

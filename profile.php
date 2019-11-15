@@ -35,6 +35,8 @@ $_POST['Function_Name']();
 //     echo $Response_Data;
 // }
 
+// getbyid
+
 function getProfileDoctorById(){
     $Data = json_decode($_POST['_Data']);
     $drid = $Data->dr_id;
@@ -91,7 +93,109 @@ function getProfileNurseById(){
     echo $Response_Data;
 }
 
+// getbyid
 
+
+// update
+
+function updateProfileAdmin(){
+    $Data = json_decode($_POST['_Data']);
+    $adminid = $Data->admin_id;
+    $adminarticle = $Data->admin_article;
+    $adminname = $Data->admin_name;
+    $adminsex = $Data->admin_sex;
+    $adminuser = $Data->admin_user;
+    $adminpasswd = $Data->admin_passwd;
+    $admintell = $Data->admin_tell;
+    $adminaddress = $Data->admin_address;
+
+    $conn = getDB();   
+    $sql_query = "UPDATE amuser set 
+    admin_article='$adminarticle',admin_name='$adminname',admin_sex='$adminsex',
+    admin_user='$adminuser',admin_passwd='$adminpasswd',admin_tell='$admintell',
+    admin_address='$adminaddress' 
+    WHERE admin_id='$adminid'";
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    echo '{"Finish":"update"}';
+}
+
+function updateProfileNurse(){
+    $Data = json_decode($_POST['_Data']);
+    $nurseid  = $Data->nurse_id;
+    $nursearticle = $Data->nurse_article;
+    $nursename = $Data->nurse_name;
+    $nursesex = $Data->nurse_sex;
+    $nurseuser = $Data->nurse_user;
+    $nursepasswd = $Data->nurse_passwd;
+    $nursetell = $Data->nurse_tell;
+    $nurseaddress = $Data->nurse_address;
+
+    $conn = getDB();   
+    $sql_query = "UPDATE nurse set 
+    nurse_article='$nursearticle',nurse_name='$nursename',
+    nurse_sex='$nursesex',nurse_user='$nurseuser',nurse_passwd='$nursepasswd'
+    ,nurse_tell='$nursetell',nurse_address='$nurseaddress' 
+    WHERE nurse_id='$nurseid'";
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    echo '{"Finish":"update"}';
+}
+
+function updateProfileDoctor(){
+    $Data = json_decode($_POST['_Data']);
+    $drid = $Data->dr_id;
+    $drarticle = $Data->dr_article;
+    $drname = $Data->dr_name;
+    $drsex = $Data->dr_sex;
+    $druser = $Data->dr_user;
+    $drpasswd = $Data->dr_passwd;
+    $drtell = $Data->dr_tell;
+    $draddress = $Data->dr_address;
+
+    $conn = getDB();   
+    $sql_query = "UPDATE doctor set 
+    dr_article='$drarticle',dr_name='$drname',dr_sex='$drsex',
+    dr_user='$druser',dr_passwd='$drpasswd',dr_tell='$drtell',dr_address='$draddress' 
+    WHERE dr_id='$drid'";
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    echo '{"Finish":"update"}';
+}
+
+function updateProfilePatient(){
+    $Data = json_decode($_POST['_Data']);
+    $pid = $Data->p_id;
+    $particle = $Data->p_article;
+    $pname = $Data->p_name;
+    $puser = $Data->p_user;
+    $ppasswd = $Data->p_passwd;
+    $pbirthDate = $Data->p_birthDate;
+    $psex = $Data->p_sex;
+    $pweight = $Data->p_weight;
+    $pheight = $Data->p_height;
+    $ptell = $Data->p_tell;
+    $paddress = $Data->p_address;
+
+    $conn = getDB();   
+    $sql_query = "UPDATE patient set 
+    p_article='$particle',p_name='$pname',p_user='$puser',
+    p_passwd='$ppasswd',p_birthDate='$pbirthDate',p_sex='$psex',
+    p_weight='$pweight',p_height='$pheight',p_tell='$ptell',
+    p_address='$paddress' 
+    WHERE p_id='$pid'";
+
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    echo '{"Finish":"update"}';
+}
+
+// update
+
+//delete
 
 // function deleteProfile(){
 //     $Data = json_decode($_POST['_Data']);
@@ -103,89 +207,6 @@ function getProfileNurseById(){
 //     echo '{"Finish":"delete"}';     
 // }
 
-function updateProfileAdmin(){
-    $Data = json_decode($_POST['_Data']);
-    $Iduser = $Data->users_id;
-    $Nameuser = $Data->user_name;
-    $Uusername = $Data->u_username;
-    $Upassword = $Data->u_password;
-    $Teluser = $Data->user_tel;
-    $Leveluser = $Data->user_level;
-    $Addressuser = $Data->user_address;
-
-    $conn = getDB();   
-    $sql_query = "UPDATE amuser set 
-    user_name='$Nameuser',u_username='$Uusername',u_password='$Upassword',
-    user_tel='$Teluser',user_level='$Leveluser',user_address='$Addressuser' 
-    WHERE users_id='$Iduser'";
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->query($sql_query);
-    echo '{"Finish":"update"}';
-}
-
-function updateProfileDoctor(){
-    $Data = json_decode($_POST['_Data']);
-    $Iduser = $Data->users_id;
-    $Nameuser = $Data->user_name;
-    $Uusername = $Data->u_username;
-    $Upassword = $Data->u_password;
-    $Teluser = $Data->user_tel;
-    $Leveluser = $Data->user_level;
-    $Addressuser = $Data->user_address;
-
-    $conn = getDB();   
-    $sql_query = "UPDATE amuser set 
-    user_name='$Nameuser',u_username='$Uusername',u_password='$Upassword',
-    user_tel='$Teluser',user_level='$Leveluser',user_address='$Addressuser' 
-    WHERE users_id='$Iduser'";
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->query($sql_query);
-    echo '{"Finish":"update"}';
-}
-
-function updateProfileNurse(){
-    $Data = json_decode($_POST['_Data']);
-    $Iduser = $Data->users_id;
-    $Nameuser = $Data->user_name;
-    $Uusername = $Data->u_username;
-    $Upassword = $Data->u_password;
-    $Teluser = $Data->user_tel;
-    $Leveluser = $Data->user_level;
-    $Addressuser = $Data->user_address;
-
-    $conn = getDB();   
-    $sql_query = "UPDATE amuser set 
-    user_name='$Nameuser',u_username='$Uusername',u_password='$Upassword',
-    user_tel='$Teluser',user_level='$Leveluser',user_address='$Addressuser' 
-    WHERE users_id='$Iduser'";
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->query($sql_query);
-    echo '{"Finish":"update"}';
-}
-
-function updateProfilePatient(){
-    $Data = json_decode($_POST['_Data']);
-    $Iduser = $Data->users_id;
-    $Nameuser = $Data->user_name;
-    $Uusername = $Data->u_username;
-    $Upassword = $Data->u_password;
-    $Teluser = $Data->user_tel;
-    $Leveluser = $Data->user_level;
-    $Addressuser = $Data->user_address;
-
-    $conn = getDB();   
-    $sql_query = "UPDATE amuser set 
-    user_name='$Nameuser',u_username='$Uusername',u_password='$Upassword',
-    user_tel='$Teluser',user_level='$Leveluser',user_address='$Addressuser' 
-    WHERE users_id='$Iduser'";
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->query($sql_query);
-    echo '{"Finish":"update"}';
-}
-
+//delete
 
 ?>

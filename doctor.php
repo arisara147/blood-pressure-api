@@ -18,14 +18,10 @@ function addDoctor(){
     $conn = getDB();
     $sql_query = "INSERT INTO doctor(dr_id,dr_article,dr_name,dr_sex,dr_user,dr_passwd,dr_tell,dr_address) 
     VALUES ('$drid','$drarticle','$drname','$drsex','$druser','$drpasswd','$drtell','$draddress')";
-
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
-<<<<<<< HEAD
-=======
     
      
->>>>>>> cbf2495402cb737d3850d803655fd64c3321503d
 }
 
 function getUserAll(){
