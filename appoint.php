@@ -24,11 +24,24 @@ function addAppoit(){
    
 }
 
-//function getAppointById(){
+function getAppointPatientById(){
+    $Data = json_decode($_POST['_Data']);
+    $Pid = $Data->getid;
+    $conn = getDB();    
+    $sql_query = "SELECT * from appoints where p_id='$Pid'";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    $rst = $conn->query($sql_query);
+    $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ); 
+    $Response_Data = json_encode($Response_Data);
+    echo $Response_Data;      
+}
+
+//function getAppointByPid(){
    // $Data = json_decode($_POST['_Data']);
-   // $IdApp = $Data->app_id;
+   // $Pid = $Data->p_id;
     //$conn = getDB();
-   // $sql_query = "SELECT * from appoint where app_id='$IdApp'";
+   // $sql_query = "SELECT * from appoints where app_id='$IdApp'";
    // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //$conn->query($sql_query);
     //$rst = $conn->query($sql_query);
