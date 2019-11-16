@@ -27,4 +27,16 @@ function addPatient(){
     $conn->query($sql_query);
 }
 
+function getPateintAll(){
+    $Data = json_decode($_POST['_Data']);
+    $conn = getDB();
+    $sql_query = "SELECT * from patient";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    $rst = $conn->query($sql_query);
+    $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ);
+    $Response_Data = json_encode($Response_Data);
+    echo $Response_Data;
+}
+
 ?>

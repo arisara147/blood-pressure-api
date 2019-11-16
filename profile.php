@@ -46,7 +46,6 @@ function getProfileDoctorById(){
     $conn->query($sql_query);
     $rst = $conn->query($sql_query);
     $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ);
-
     $Response_Data = json_encode($Response_Data);
     echo $Response_Data;
 }
