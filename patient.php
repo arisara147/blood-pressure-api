@@ -27,16 +27,28 @@ function addPatient(){
     $conn->query($sql_query);
 }
 
+<<<<<<< HEAD
 function getPateintAll(){
     $Data = json_decode($_POST['_Data']);
     $conn = getDB();
+=======
+function getallPatient(){
+    $Data = json_decode($_POST['_Data']);
+    $conn = getDB();    
+>>>>>>> 795c61a605aa0006843185dcdf174c13432a6c9a
     $sql_query = "SELECT * from patient";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
     $rst = $conn->query($sql_query);
+<<<<<<< HEAD
     $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ);
     $Response_Data = json_encode($Response_Data);
     echo $Response_Data;
+=======
+    $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ);      
+    $Response_Data = json_encode($Response_Data);
+    echo $Response_Data; 
+>>>>>>> 795c61a605aa0006843185dcdf174c13432a6c9a
 }
 
 ?>
