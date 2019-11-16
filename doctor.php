@@ -20,6 +20,12 @@ function addDoctor(){
     VALUES ('$drid','$drarticle','$drname','$drsex','$druser','$drpasswd','$drtell','$draddress')";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
+<<<<<<< HEAD
+     
+}
+
+function getDoctorAll(){
+=======
         
 }
 
@@ -37,9 +43,10 @@ function getallDoctor(){
 
 
 function getUserAll(){
+>>>>>>> 795c61a605aa0006843185dcdf174c13432a6c9a
     $Data = json_decode($_POST['_Data']);
     $conn = getDB();
-    $sql_query = "SELECT * from amuser";
+    $sql_query = "SELECT * from doctor";
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->query($sql_query);
     $rst = $conn->query($sql_query);
