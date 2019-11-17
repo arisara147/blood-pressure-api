@@ -24,4 +24,6 @@ function addAdmin(){
     $conn->query($sql_query);
 }
 
+
+
 ?>

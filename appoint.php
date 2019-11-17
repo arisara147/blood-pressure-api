@@ -37,6 +37,55 @@ function getAppointPatientById(){
     echo $Response_Data;      
 }
 
+function getAppointByAppId(){
+    $Data = json_decode($_POST['_Data']);
+    $Appid = $Data->app_id;
+    $conn = getDB();    
+    $sql_query = "SELECT * from appoints where app_id='$Appid'";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    $rst = $conn->query($sql_query);
+    $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ); 
+    $Response_Data = json_encode($Response_Data);
+    echo $Response_Data;      
+}
+
+function updateAppoint(){
+    $Data = json_decode($_POST['_Data']);
+    $IdApp = $Data->app_id;
+    $Date = $Data->app_date;
+    $Time = $Data->app_time;
+    $Detail = $Data->app_detail;
+    $conn = getDB();    
+    $sql_query = "UPDATE appoints set app_date='$Date',app_time='$Time',app_detail='$Detail' WHERE app_id='$IdApp'";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    echo '{"Finish":"update"}';
+}
+
+function getAppointAll(){
+    $Data = json_decode($_POST['_Data']);
+    $Pid = $Data->getid;
+    $conn = getDB();    
+    $sql_query = "SELECT * from appoints";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    $rst = $conn->query($sql_query);
+    $Response_Data = $rst->fetchAll(PDO::FETCH_OBJ); 
+    $Response_Data = json_encode($Response_Data);
+    echo $Response_Data;      
+}
+
+function deleteAppoint(){
+    $Data = json_decode($_POST['_Data']);
+    $AppId = $Data->app_id;
+    $conn = getDB();
+    $sql_query = "DELETE FROM appoints where app_id='$AppId'";
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query($sql_query);
+    echo '{"Finish":"delete"}';    
+}
+
 //function getAppointByPid(){
    // $Data = json_decode($_POST['_Data']);
    // $Pid = $Data->p_id;
